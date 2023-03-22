@@ -1,10 +1,10 @@
-import { Text, View } from 'react-native';
+import * as S from './styles';
 
 export const Groups = () => {
   return (
-    <View>
-      <Text>Guilherme Fontes</Text>
-    </View>
+    <S.Container>
+      <S.Text>Guilherme Fontes</S.Text>
+    </S.Container>
   );
 };
 
