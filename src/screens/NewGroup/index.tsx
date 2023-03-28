@@ -4,11 +4,13 @@ import Highlight from '@components/Highlight';
 import Input from '@components/Input';
 import * as S from './styles';
 import { useNavigation } from '@react-navigation/native';
+import { useState } from 'react';
 
 export const NewGroup = () => {
   const navigate = useNavigation();
+  const [group, setGroup] = useState<string>('');
   const handleNewGroup = () => {
-    navigate.navigate('players', { group: 'novo grupo' });
+    navigate.navigate('players', { group });
   };
 
   return (
@@ -20,7 +22,11 @@ export const NewGroup = () => {
           title="Nova turma"
           subTitle="crie a turma para adicionar pessoas"
         />
-        <Input placeholder="Nome da turma" />
+        <Input
+          placeholder="Nome da turma"
+          value={group}
+          onChangeText={setGroup}
+        />
         <Button
           label="Criar"
           style={{ marginTop: 20 }}

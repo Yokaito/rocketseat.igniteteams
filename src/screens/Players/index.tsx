@@ -9,43 +9,37 @@ import * as S from './styles';
 import PlayerCard from '@components/PlayerCard';
 import ListEmpty from '@components/ListEmpty';
 import Button from '@components/Button';
+import { useRoute } from '@react-navigation/native';
+
+type RouteParams = {
+  group: string;
+};
 
 export const Players = () => {
-  const [teams, setTeams] = useState('Time A');
-  const [players] = useState([
-    'Guilherme',
-    'Rodrigo',
-    'Diego',
-    'Gabriel',
-    'Teste',
-    'Teste1',
-    'Teste2',
-    'Teste3',
-    'Teste4',
-    'Teste5',
-  ]);
+  const [team, setTeam] = useState('');
+  const [players] = useState([]);
+  const route = useRoute();
+
+  const { group } = route.params as RouteParams;
 
   return (
     <S.Container>
       <Header showBackButton />
-      <Highlight
-        title="Nome da turma"
-        subTitle="adicione a galera e separe os times"
-      />
+      <Highlight title={group} subTitle="adicione a galera e separe os times" />
       <S.Form>
         <Input placeholder="Nome da pessoa" autoCorrect={false} />
         <ButtonIcon icon="add" />
       </S.Form>
       <S.HeaderList>
         <FlatList
-          data={['Time A', 'Time B', 'Time C', 'Time D', 'Time E']}
+          data={['Time A', 'Time B']}
           keyExtractor={(item) => item}
           showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => (
             <Filter
               title={item}
-              isActive={item === teams}
-              onPress={() => setTeams(item)}
+              isActive={item === team}
+              onPress={() => setTeam(item)}
             />
           )}
           horizontal
