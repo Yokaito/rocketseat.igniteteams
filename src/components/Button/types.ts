@@ -1,10 +1,12 @@
-import type { TouchableOpacity } from 'react-native';
+import type { TouchableOpacityProps } from 'react-native';
 
 export type Variants = 'primary' | 'secondary';
 
-export type ButtonProps = Partial<TouchableOpacity> & {
+export type ButtonProps = TouchableOpacityProps & {
   variant?: Variants;
   label?: string;
 };
 
-export type ButtonStyleProps = Pick<ButtonProps, 'variant'>;
+export type ButtonStyleProps = {
+  variant?: Variants;
+};
