@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FlatList } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import * as S from './styles';
 
@@ -10,6 +11,7 @@ import { ListEmpty } from '@components/ListEmpty';
 import { Button } from '@components/Button';
 
 export const Groups = () => {
+  const navigation = useNavigation();
   const [groups] = useState<string[]>([
     'Turma 1',
     'Turma 2',
@@ -18,6 +20,10 @@ export const Groups = () => {
     'Turma 5',
     'Turma 6',
   ]);
+
+  const handleNewGroup = () => {
+    navigation.navigate('new');
+  };
 
   return (
     <S.Container>
@@ -33,7 +39,11 @@ export const Groups = () => {
         )}
         showsVerticalScrollIndicator={false}
       />
-      <Button variant="primary" label="Criar nova turma" />
+      <Button
+        variant="primary"
+        label="Criar nova turma"
+        onPress={handleNewGroup}
+      />
     </S.Container>
   );
 };
