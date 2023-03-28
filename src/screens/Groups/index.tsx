@@ -31,6 +31,7 @@ export const Groups = () => {
         ListEmptyComponent={() => (
           <ListEmpty message="Nenhuma turma encontrada" />
         )}
+        showsVerticalScrollIndicator={false}
       />
       <Button variant="primary" label="Criar nova turma" />
     </S.Container>
